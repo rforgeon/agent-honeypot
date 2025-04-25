@@ -23,10 +23,6 @@ This project creates a platform where one LLM (the "attacker") attempts to gener
 
 ### Clone the Repository
 
-```bash
-git clone https://github.com/your-username/agent-honeypot.git
-cd agent-honeypot
-```
 
 ### Backend Setup
 
