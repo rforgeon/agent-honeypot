@@ -64,3 +64,4 @@ logs/
 .env.test.local
 .env.production.local
 .env*.local frontend/node_modules/
+frontend/node_modules/
