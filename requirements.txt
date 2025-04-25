@@ -1,0 +1,11 @@
+# Core dependencies
+PyYAML>=6.0
+Flask>=2.0.0
+flask-cors>=4.0.0
+
+# Placeholder LLM Libraries (uncomment and install as needed)
+openai>=1.0
+anthropic>=0.20
+google-generativeai>=0.4
+
+# Add other dependencies here if required by specific analysis tools or LLM libraries 

@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@radix-ui/react-scroll-area": "^1.2.4"
+  }
+}
