@@ -4,7 +4,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from "@/components/theme-provider"
 import Link from 'next/link'
-import { Home, PlayCircle, Settings, Shield, PlusCircle } from 'lucide-react'
+import { Home, PlayCircle, Settings, Shield, PlusCircle, MousePointerClick } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
@@ -92,6 +92,18 @@ export default function RootLayout({
                           >
                             <Settings className="h-4 w-4 mr-2" />
                             <span>Configuration</span>
+                          </Link>
+                          <Link 
+                            href="/browser-use" 
+                            className={cn(
+                              "flex items-center px-3 py-2 rounded-md transition-colors",
+                              pathname === '/browser-use' 
+                                ? "bg-sidebar-accent/80 text-sidebar-accent-foreground font-medium shadow-sm" 
+                                : "hover:bg-sidebar-accent/20 hover:text-sidebar-accent-foreground"
+                            )}
+                          >
+                            <MousePointerClick className="h-4 w-4 mr-2" />
+                            <span>Browser Use</span>
                           </Link>
                         </div>
                       </div>

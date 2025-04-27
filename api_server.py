@@ -9,6 +9,9 @@ from datetime import datetime
 from flask import Flask, jsonify, request, Response
 from flask_cors import CORS
 
+# Import our browser use handler
+from browser_use_handler import browser_use_interaction
+
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
@@ -349,6 +352,34 @@ def stop_run(run_id):
         
         return jsonify({"success": False, "error": f"Run {run_id} is not active"}), 404
     except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+@app.route('/api/browser-use', methods=['POST'])
+def browser_use():
+    """Handle browser-use requests"""
+    try:
+        # Get the request data
+        data = request.json
+        url = data.get('url')
+        prompt = data.get('prompt')
+        provider = data.get('provider', 'openai')  # Default to OpenAI if not specified
+        
+        # Validate required fields
+        if not url:
+            return jsonify({"success": False, "error": "URL is required"}), 400
+        if not prompt:
+            return jsonify({"success": False, "error": "Prompt is required"}), 400
+        
+        # Log the request
+        app.logger.info(f"Browser Use request - URL: {url}, Provider: {provider}")
+        
+        # Run the browser use interaction
+        result = browser_use_interaction(url, prompt, provider)
+        
+        # Return the result
+        return jsonify({"success": True, "data": result})
+    except Exception as e:
+        app.logger.error(f"Error in browser-use endpoint: {str(e)}")
         return jsonify({"success": False, "error": str(e)}), 500
 
 if __name__ == '__main__':
